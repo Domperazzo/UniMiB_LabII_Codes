@@ -1,0 +1,5 @@
+Calibrazione sonde: vediamo le onde quadre. Sium.
+
+Punto 1
+- Resistenza da 10.1 Ohm
+- Onda generata: 10 Hz
