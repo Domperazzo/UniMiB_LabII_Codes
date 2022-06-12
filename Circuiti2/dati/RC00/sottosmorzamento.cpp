@@ -88,6 +88,12 @@ int main(int argc, char **argv) {
   modello.SetParameter(1, 0.814);
   modello.SetParameter(2, 6190);
   modello.SetParameter(3, 48400);
+
+  modello.SetParName(0, "C");
+  modello.SetParName(1, "V_{0}");
+  modello.SetParName(2, "#gamma");
+  modello.SetParName(3, "#omega_{0}");
+
   TFitResultPtr fit_result = grafico.Fit(&modello, "SQ+");
   TCanvas c1;
   grafico.SetTitle("Cicuito RLC sottosmorzato ; Tempo [s] ; Tensione [V]");
