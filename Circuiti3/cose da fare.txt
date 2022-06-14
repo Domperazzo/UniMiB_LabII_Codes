@@ -3,3 +3,9 @@ Trovare massimo e minimo per ogni segnale in un intervallo e calcolare la differ
 	- differenza di fase tra V_a - V_b = phi''
 	- differenza di fase MATH - V_a = phi'
 	- Ampiezza del segnale V_b - V_a
+
+
+Di seguito il primo è delta phi' e il secondo delta phi''
+
+RC 25 hz: 0,02076	0,01728
+RC 35 hz: 0,01392	0,02656
