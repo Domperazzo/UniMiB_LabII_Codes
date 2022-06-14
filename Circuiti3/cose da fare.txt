@@ -1,0 +1,5 @@
+Cose da fare analisi dati:
+Trovare massimo e minimo per ogni segnale in un intervallo e calcolare la differenza di tempo rispettivamente tra:
+	- differenza di fase tra V_a - V_b = phi''
+	- differenza di fase MATH - V_a = phi'
+	- Ampiezza del segnale V_b - V_a
