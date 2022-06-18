@@ -23,11 +23,28 @@
 #include "TAttFill.h"
 #include "TVirtualPad.h"
 
-double massimo(std::vector<double> v_campione, int range){
+
+int posizione_massimo(std::vector<double> v_campione){
+  double max = v_campione.at(0);
+  int p=0;
+  for (int i = 1; i<v_campione.size(); i++) {
+  		if(v_campione.at(i)>max){
+  			max=v_campione.at(i);
+  			p=i;
+		  }
+	}
+  return p;
+}
+
+
+double max(std::vector<double> v_campione, int range){
   double max = v_campione.at(0);
   for (int i = 0; i < range; i++) {
     if (v_campione.at(i) > max) {
       max = v_campione.at(i);
+    }
+    if (v_campione.at(i+1)<max) {
+      break;
     }
   }
   return ceil(max);
@@ -50,7 +67,7 @@ int main(int argc, char **argv) {
 
 // Apertura CH1
 std::ifstream dati1;
-dati1.open("RC_45hz_CH1.txt", std::ios::in);
+dati1.open("RC_700hz_CH1.txt", std::ios::in);
 std::vector<double> v_secondi1, v_corrente1;
 while (true) {
     double secondi1, corrente1;
@@ -63,7 +80,7 @@ dati1.close();
 
 // Apertura CH2
 std::ifstream dati2;
-dati2.open("RC_45hz_CH2.txt", std::ios::in);
+dati2.open("RC_700hz_CH2.txt", std::ios::in);
 std::vector<double> v_secondi2, v_corrente2;
 while (true) {
     double secondi2, corrente2;
@@ -76,7 +93,7 @@ dati2.close();
 
 // Apertura MATH
 std::ifstream dati_math;
-dati_math.open("RC_45hz_MATH.txt", std::ios::in);
+dati_math.open("RC_700hz_MATH.txt", std::ios::in);
 std::vector<double> v_secondi_math, v_corrente_math;
 while (true) {
     double secondi_math, corrente_math;
@@ -88,7 +105,7 @@ while (true) {
 dati_math.close();
 
 
-
+/*
   double ampiezza_massima_corrente_math = massimo(v_corrente_math, v_secondi_math.size());
   int posizione_massimo_corrente_math = posizione_max(ampiezza_massima_corrente_math, v_corrente_math);
 
@@ -105,6 +122,13 @@ dati_math.close();
   std::cout << "delta phi primo: \t" << differenza_fase_primata << '\n';
   std::cout << "delta phi secondo: \t" << differenza_fase_doppioprimata << '\n';
 
+*/
+
+  double differenza_fase_primata = v_secondi1.at(posizione_massimo(v_corrente_math))-v_secondi2.at(posizione_massimo(v_corrente1));
+  double differenza_fase_doppioprimata = v_secondi1.at(posizione_massimo(v_corrente1))-v_secondi2.at(posizione_massimo(v_corrente2));
+
+  std::cout << "delta phi primo: \t" << differenza_fase_primata << '\n';
+  std::cout << "delta phi secondo: \t" << differenza_fase_doppioprimata << '\n';
 
 
 
@@ -115,9 +139,7 @@ dati_math.close();
 
 
 
-
-
-
+/*
 TGraph grafico1, grafico2, grafico3;
 for (int i = 0; i < v_secondi2.size(); i++) {
   grafico2.SetPoint(i, v_secondi2.at(i), v_corrente2.at(i));
@@ -140,6 +162,6 @@ TCanvas c1;
 multi.Draw("AP");
 theApp.Run();
 
-
+*/
   return 0;
 }
