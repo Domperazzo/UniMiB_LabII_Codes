@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 
 // Apertura CH1
 std::ifstream dati1;
-dati1.open("RC_700hz_CH1.txt", std::ios::in);
+dati1.open("RC_100hz_CH1.txt", std::ios::in);
 std::vector<double> v_secondi1, v_corrente1;
 while (true) {
     double secondi1, corrente1;
@@ -52,7 +52,7 @@ dati1.close();
 
 // Apertura CH2
 std::ifstream dati2;
-dati2.open("RC_700hz_CH2.txt", std::ios::in);
+dati2.open("RC_100hz_CH2.txt", std::ios::in);
 std::vector<double> v_secondi2, v_corrente2;
 while (true) {
     double secondi2, corrente2;
@@ -65,7 +65,7 @@ dati2.close();
 
 // Apertura MATH
 std::ifstream dati_math;
-dati_math.open("RC_700hz_MATH.txt", std::ios::in);
+dati_math.open("RC_100hz_MATH.txt", std::ios::in);
 std::vector<double> v_secondi_math, v_corrente_math;
 while (true) {
     double secondi_math, corrente_math;
@@ -111,17 +111,24 @@ for (int i = 0; i < v_posZeri_MATH.size(); i++) {
 
 std::cout << "CH1" << '\n';
 for (int i = 0; i < v_secondi_zeri1.size(); i++) {
-  std::cout << v_secondi_zeri1.at(i) << '\n';
+  if (v_secondi_zeri1.at(i) > 0.) {
+    std::cout << v_secondi_zeri1.at(i) << '\n';
+  }
 }
 
 std::cout << "CH2" << '\n';
 for (int i = 0; i < v_secondi_zeri2.size(); i++) {
-  std::cout << v_secondi_zeri2.at(i) << '\n';
+  if (v_secondi_zeri2.at(i) > 0.) {
+    std::cout << v_secondi_zeri2.at(i) << '\n';
+  }
 }
 
 std::cout << "MATH" << '\n';
 for (int i = 0; i < v_secondi_zeri_math.size(); i++) {
-  std::cout << v_secondi_zeri_math.at(i) << '\n';
+  if (v_secondi_zeri_math.at(i) > 0.) {
+    std::cout << v_secondi_zeri_math.at(i) << '\n';
+  }
+
 }
 
 /*
