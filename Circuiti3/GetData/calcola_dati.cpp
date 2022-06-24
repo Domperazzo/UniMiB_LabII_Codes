@@ -23,43 +23,6 @@
 #include "TAttFill.h"
 #include "TVirtualPad.h"
 
-
-int posizione_massimo(std::vector<double> v_campione){
-  double max = v_campione.at(0);
-  int p=0;
-  for (int i = 1; i<v_campione.size(); i++) {
-  		if(v_campione.at(i)>max){
-  			max=v_campione.at(i);
-  			p=i;
-		  }
-	}
-  return p;
-}
-
-
-double max(std::vector<double> v_campione, int range){
-  double max = v_campione.at(0);
-  for (int i = 0; i < range; i++) {
-    if (v_campione.at(i) > max) {
-      max = v_campione.at(i);
-    }
-    if (v_campione.at(i+1)<max) {
-      break;
-    }
-  }
-  return ceil(max);
-}
-
-int posizione_max(double massimo, std::vector<double> v_dati){
-  for (int i = 0; i < v_dati.size(); i++) {
-      if (v_dati.at(i)==massimo) {
-        return i;
-      }
-  }
-  return 0;
-}
-
-
 int main(int argc, char **argv) {
 
   TApplication theApp("theApp", &argc, argv);
@@ -103,6 +66,15 @@ while (true) {
     v_corrente_math.push_back(corrente_math);
 }
 dati_math.close();
+
+
+
+
+
+
+
+
+
 
 
 /*
